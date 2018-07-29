@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MIKES' VOUCHER POOL MICROSERVICE BASED ON PHP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <script>
+        function validateForm1() {
+            const x = document.forms["form1"]["special_offer"].value;
+            if (x == "") {
+                alert("special offer must be filled out");
+                return false;
+            }
+            const y = document.forms["form1"]["expiry_date"].value;
+            if (y == "") {
+                alert("expiry date must be filled out");
+                return false;
+            }
+            const z = document.forms["form1"]["percentage_discount"].value;
+            if (z == "") {
+                alert("percentage discount must be filled out");
+                return false;
+            }
+        }
+
+        function validateForm2() {
+            const x = document.forms["form2"]["voucher_code"].value;
+            if (x == "") {
+                alert("voucher code must be filled out");
+                return false;
+            }
+            const y = document.forms["form2"]["email"].value;
+            if (y == "") {
+                alert("Email must be filled out");
+                return false;
+            }
+        }
+
+        function validateForm3() {
+            const x = document.forms["form3"]["email"].value;
+            if (x == "") {
+                alert("Email must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+<div class="container-contact100">
+
+    <div class="wrap-contact100">
+            	<span class="contact100-form-title">
+					Mikes' voucher pool microservice based on PHP
+				</span>
+        <br>
+        <hr>
+        <br>
+        <span class="contact100-form-title">
+					DATABASE SCHEMA
+				</span>
+            <img src="pics/pic.png" align="center" />
+
+<!--Form 1 starts here-->
+        <br>
+        <hr>
+        <br>
+        <form class="contact100-form validate-form" name="form1" id="form1" method="get" action="generate_voucher_code.php" onsubmit="return validateForm1()">
+				<span class="contact100-form-title">
+                    <u>TASK 1:</u> <br>For a given Special Offer and and expiration date, generate for each Recipient a
+                    Voucher Code
+				</span>
+
+            <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+                <input class="input100" type="text" name="special_offer"  placeholder="Special Offer">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Please enter your email: e@a.x">
+                <input class="input100" type="text" name="expiry_date"  placeholder="Expiry Date">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Please enter your email: e@a.x">
+                <input class="input100" type="text" name="percentage_discount" id="email" placeholder="Percentage Discount">
+                <span class="focus-input100"></span>
+            </div>
+
+
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Send as JSON
+						</span>
+                </button>
+            </div>
+        </form>
+        <!--Form 1 ends here-->
+
+        <br>
+        <hr>
+        <br>
+<!--Form 2 starts here-->
+        <form class="contact100-form validate-form" id="form2" name="form2" method="get" action="get_percentge_discount.php" onsubmit="return validateForm2()">
+				<span class="contact100-form-title">
+                    <u>TASK 2</u>:<br>receive a Voucher Code and Email
+and validates the Voucher Code. In Case it is valid, return the Percentage Discount
+and set the date of usage
+				</span>
+
+            <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+                <input class="input100" type="text" name="voucher_code" placeholder="Voucher Code">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Please enter your email: e@a.x">
+                <input class="input100" type="text" name="email" placeholder="E-mail">
+                <span class="focus-input100"></span>
+            </div>
+
+
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Send as JSON
+						</span>
+                </button>
+            </div>
+        </form>
+        <!--Form 2 ends here-->
+        <br>
+        <hr>
+        <br>
+<!--Form 3 starts here-->
+        <form class="contact100-form validate-form" id="form3" name="form3" method="get" action="get_users_codes.php" onsubmit="return validateForm3()">
+				<span class="contact100-form-title">
+                    <u>TASK 3:</u> <br>For a given Email, return all his valid Voucher Codes with the Name of the
+Special Offer
+				</span>
+
+
+            <div class="wrap-input100 validate-input" data-validate="Please enter your email: e@a.x">
+                <input class="input100" type="text" name="email" placeholder="E-mail">
+                <span class="focus-input100"></span>
+            </div>
+
+
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Send as JSON
+						</span>
+                </button>
+            </div>
+        </form>
+        <!--Form 3 ends here-->
+
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+
+</body>
+</html>
