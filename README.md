@@ -15,7 +15,7 @@ content summary
 
 3. get_users_codes.php
 
-4. index.php
+4. index.html
 
 --5 Detailed documentation present in below url
 https://documenter.getpostman.com/view/4967133/RWMLKkns
